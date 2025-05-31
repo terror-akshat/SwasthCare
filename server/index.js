@@ -21,6 +21,7 @@ app.use(
       // "https://glittery-snickerdoodle-abbd22.netlify.app",
       //  "https://samreen-hospital.vercel.app",
       "http://localhost:5173",
+      "https://amazing-stroopwafel-591a17.netlify.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
