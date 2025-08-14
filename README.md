@@ -68,7 +68,7 @@ A full-stack hospital management system to streamline patient care and hospital 
 - **Auth:** JWT (access token)  
 - **Uploads:** Cloudinary / dedicated upload routes  
 - **Testing:** Jest (unit + integration testing)  
-- **Deployment:** Netlify (frontend) + Node host / Docker (backend)
+- **Deployment:** Netlify (frontend) + Render (backend)
 
 ---
 
