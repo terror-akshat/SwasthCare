@@ -15,7 +15,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 
 const Signin = () => {
   const navigate = useNavigate();
-  
+
   const toastOptions = {
     position: "top-right",
     autoClose: 5000,
@@ -28,11 +28,6 @@ const Signin = () => {
     password: "",
   });
 
-  // ✅ Remove token on mount (force logout)
-  // useEffect(() => {
-  //   localStorage.removeItem("authToken");
-  // }, []);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -41,21 +36,20 @@ const Signin = () => {
     }));
   };
 
-
-  const {login} = useAuth();
-  const from = location.state?.from?.pathname || '/homepage';
+  const { login } = useAuth();
+  const from = location.state?.from?.pathname || "/homepage";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.username.trim() || !formData.password.trim()) {
       toast.error("Username and password are required", toastOptions);
       return;
     }
-    
+
     try {
       const result = await login(formData.username, formData.password);
-      
+
       if (result.success) {
         toast.success("Login successful!", toastOptions);
         navigate(from, { replace: true });
@@ -74,10 +68,16 @@ const Signin = () => {
             toast.error("Server error. Please try again later.", toastOptions);
             break;
           default:
-            toast.error(error.response.data.msg || "Login failed", toastOptions);
+            toast.error(
+              error.response.data.msg || "Login failed",
+              toastOptions
+            );
         }
       } else if (error.request) {
-        toast.error("No response from server. Check your connection.", toastOptions);
+        toast.error(
+          "No response from server. Check your connection.",
+          toastOptions
+        );
       } else {
         toast.error("Login failed. Please try again.", toastOptions);
       }
@@ -172,7 +172,30 @@ const Signin = () => {
                 >
                   Sign In
                 </Button>
-                
+                <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-start",
+                      ml: 1,
+                    }}
+                  >
+                    <Typography variant="body1">admin: user1</Typography>
+                    <Typography variant="body2">Password: 123456</Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      // ml: 1,
+                    }}
+                  >
+                    <Typography variant="body1">master: master</Typography>
+                    <Typography variant="body2">Password: 123456</Typography>
+                  </Box>
+                </Box>
               </Box>
             </Paper>
           </Box>
