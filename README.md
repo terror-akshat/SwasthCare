@@ -1,75 +1,64 @@
-# SwasthCare 
+# 🏥 SwasthCare — Hospital Management System
 
--https://amazing-stroopwafel-591a17.netlify.app/
+**Live Demo:** https://grand-mooncake-4b0873.netlify.app/  
+**Test Login:**  
+- **Admin:** `user1 / 123456`  
+- **Master:** `master1 / 123456`
 
-🏥 Swasthcare Project Swasthcare is a full-stack hospital management system designed to simplify and streamline patient and hospital operations. It features role-based authentication for two main user roles: Admin and Master. Each role has access to specific functionalities to help manage hospital workflows efficiently.
+A full-stack hospital management system to streamline patient care and hospital operations with **role-based access** (Admin, Master), **OPD/IPD**, **Ward/Bed management**, **Billing**, and **document uploads**.
 
-🔐 Role-Based Access Admin:
+---
 
-Registers patients and creates their profiles.
+## ✨ Features
 
-Fills out OPD and IPD forms.
+### Authentication & Authorization
+- JWT-based login with token verification
+- Role-based routing: `ProtectedRoute` (Admin+) and `MasterRoute` (Master only)
+- Unauthorized access redirection
 
-Uploads patient history, lab reports, and other medical documents.
+### Patient Management
+- Create & update patient profiles
+- OPD & IPD records
+- Upload patient history, lab reports, medical documents
+- View patient history & lab reports
 
-Manages bed assignments including bed shifting and discharging patients.
+### Bed & Ward Management
+- Assign/shift/discharge beds
+- **Master only:** Create wards, maintain real-time available bed counts
 
-Generates and manages billing for treatments and hospital stays.
+### Billing
+- Auto-generate treatment & stay bills
+- View printable bill
 
-Master (Has all Admin access plus advanced controls):
+### Print & Reports
+- Printable OPD records
+- Full report history + detailed lab reports
 
-Ward Management System:
+### Error Handling
+- 404/Not Found
+- Access denied / Unauthorized
 
-Keeps track of patient status in each ward and bed.
+---
 
-Updates the count of available beds.
+## 👤 Roles & Permissions
 
-Adds new wards as needed.
+| Action / Module              | Admin | Master |
+|-----------------------------|:-----:|:------:|
+| Create/Update Patients      |  ✅   |   ✅   |
+| OPD/IPD Forms               |  ✅   |   ✅   |
+| Upload Reports/Documents    |  ✅   |   ✅   |
+| Bed Assign/Shift/Discharge  |  ✅   |   ✅   |
+| Create Wards                |  ❌   |   ✅   |
+| Update Ward Bed Counts      |  ❌   |   ✅   |
+| Billing (Generate/View)     |  ✅   |   ✅   |
 
-🔧 Key Features Authentication:
+---
 
-Role-based routing and protected routes using ProtectedRoute and MasterRoute.
+## 🧱 Tech Stack
 
-Patient Management:
-
-Profile creation and updates.
-
-OPD/IPD records with image uploads.
-
-Viewing patient history and lab reports.
-
-Bed & Ward Management:
-
-Bed assignment, shift, and discharge.
-
-Ward creation and real-time bed count updates (Master only).
-
-Billing System:
-
-Automated billing form generation and hospital bill display.
-
-Print & Report Views:
-
-Printable OPD records.
-
-Accessible report history and detailed lab reports.
-
-Error Handling:
-
-Unauthorized access redirection.
-
-Pages for not found or unavailable information.
-
-🛠️ Tech Stack Frontend: React with React Router
-
-Backend: Node.js + Express
-
-Database: MongoDB
-
-Authentication: JWT with token verification
-
-for access-> user1 123456 master1 123456
-
-Image Uploads: Handled via separate upload routes
-
-Deployment-Ready: Configured for both local and cloud-based frontend URLs
+- **Frontend:** React, React Router, Axios, Vite
+- **Backend:** Node.js, Express
+- **Database:** MongoDB (Mongoose)
+- **Auth:** JWT (access token)
+- **Uploads:** Cloudinary / dedicated upload routes
+- **Deployment:** Netlify (frontend) + any Node host (backend)
